@@ -68,13 +68,18 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     - _Height: 0
+    - _MetaCosineWaveFrequency: 0.04
+    - _MetaCosineWaveStrength: 5.98
+    - _MetaSineWaveFrequency: 0.086
+    - _MetaSineWaveStrength: 5.82
+    - _MetaSineWaveSubFrequency: 0.6
     - _RandomOffset: 0
-    - _SineWaveFrequency: 0.5
-    - _SineWaveStrength: 0.5
+    - _SineWaveFrequency: 0.219
+    - _SineWaveStrength: 0.95
     - _SlopeSeverity: 0.3
     - _ZWrite: 0
     m_Colors:
-    - _Albedo: {r: 0.6855345, g: 0.6855345, b: 0.6855345, a: 0}
+    - _Albedo: {r: 0.5597484, g: 0.54295003, b: 0.39252794, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

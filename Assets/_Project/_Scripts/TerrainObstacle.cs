@@ -6,8 +6,9 @@ namespace LAS
     public class TerrainObstacle : MonoBehaviour
     {
         [SerializeField] private ObstacleCollisionModel _collisionModel;
-        
         [SerializeField] private SpriteRenderer _spriteRenderer;
+        
+        [SerializeField] private float _despawnDistance = 30;
         
         private Bounds _spriteBounds => _spriteRenderer.sprite.bounds;
         
@@ -60,7 +61,7 @@ namespace LAS
         {
             float delta = transform.position.x - _terrainManager.transform.position.x;
 
-            if (delta < -50)
+            if (delta < -_despawnDistance * _terrainManager.MainCamera.orthographicSize)
                 gameObject.SetActive(false);
         }
     }

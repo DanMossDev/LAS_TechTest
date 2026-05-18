@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _obstaclePrefabs:
   - ObstaclePrefab: {fileID: 777151118093683048, guid: 069bef487a312b844a67bd3bef38d166, type: 3}
-    ScaleRange: {x: 1, y: 5}
+    ScaleRange: {x: 5, y: 10}
   - ObstaclePrefab: {fileID: 1966841321558481419, guid: 777e9dbe819982e4f86313c3b668113a, type: 3}
-    ScaleRange: {x: 1, y: 5}
+    ScaleRange: {x: 5, y: 10}
   - ObstaclePrefab: {fileID: 9156104672763541197, guid: 902717f67d7bccb43b8490ef1fa8fc32, type: 3}
-    ScaleRange: {x: 1, y: 5}
+    ScaleRange: {x: 5, y: 10}
   - ObstaclePrefab: {fileID: 2445672396416202227, guid: 07211a3ea4926ec4ea645fc80706d194, type: 3}
-    ScaleRange: {x: 1, y: 5}
+    ScaleRange: {x: 5, y: 10}
   - ObstaclePrefab: {fileID: 3741750460565915904, guid: 580c125b693c8b749be038bd3c28e30e, type: 3}
     ScaleRange: {x: 10, y: 25}
