@@ -474,8 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4fb9961ce26cfb42ad7aee9e518be70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _heightTable: []
-  _resolution: 3
+  _collisionModel: {fileID: 11400000, guid: 14e9412cfacdbfc49a340792d5935647, type: 2}
   _spriteRenderer: {fileID: 933985835}
 --- !u!212 &933985835
 SpriteRenderer:
