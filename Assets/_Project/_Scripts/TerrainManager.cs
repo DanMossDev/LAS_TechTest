@@ -6,14 +6,24 @@ namespace LAS
 {
     public class TerrainManager : MonoBehaviour
     {
+        [Header("Obstacle Spawning Logic")]
+        [SerializeField] private LevelObstaclesModel _levelObstaclesModel;
+        
+        [SerializeField, Tooltip("X distance in Unity units ahead of the player that obstacles will be spawned")] private float _obstacleSpawnOffset = 25.0f;
+        
+        [SerializeField] private Vector2 _timeBetweenObstacleSpawns;
+        
+        [Space, Header("Visuals")]
         [SerializeField] private float _slopeSeverity = 0.3f;
         [SerializeField] private float _sineFrequency = 0.5f;
         [SerializeField] private float _sineStrength = 0.5f;
         
         [SerializeField] private Material _terrainMaterial;
         
-        [SerializeField] private List<TerrainObstacle> _terrainObstacles;
-
+        private float _timeTilNextObstacleSpawn;
+        private float _timeSinceLastObstacleSpawn;
+        
+        private List<TerrainObstacle> _terrainObstacles = new List<TerrainObstacle>();
         private float _randomOffset;
         
         //Property Hashes
@@ -36,6 +46,10 @@ namespace LAS
         private void FixedUpdate()
         {
             UpdateMaterialProperties();
+
+            _timeSinceLastObstacleSpawn += Time.deltaTime;
+            if (_timeSinceLastObstacleSpawn >= _timeTilNextObstacleSpawn)
+                SpawnNewObstacle();
         }
 
         private void UpdateMaterialProperties()
@@ -61,6 +75,27 @@ namespace LAS
             }
 
             return y;
+        }
+
+        private void SpawnNewObstacle()
+        {
+            _timeSinceLastObstacleSpawn = 0;
+            _timeTilNextObstacleSpawn = UnityEngine.Random.Range(_timeBetweenObstacleSpawns.x, _timeBetweenObstacleSpawns.y);
+            
+            var obstacle = _levelObstaclesModel.GetTerrainObstacle();
+            
+            float xPos = transform.position.x + _obstacleSpawnOffset; //TODO - adapt offset for larger obstacles?
+            float yPos = GetTerrainHeightAtX(xPos);
+            
+            obstacle.transform.position = new Vector3(xPos, yPos, 0);
+            obstacle.Initialise(this);
+            _terrainObstacles.Add(obstacle);
+        }
+
+        public void RemoveObstacle(TerrainObstacle obstacle)
+        {
+            if (_terrainObstacles.Contains(obstacle))
+                _terrainObstacles.Remove(obstacle);
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace LAS
@@ -7,8 +8,10 @@ namespace LAS
         [SerializeField] private ObstacleCollisionModel _collisionModel;
         
         [SerializeField] private SpriteRenderer _spriteRenderer;
-
+        
         private Bounds _spriteBounds => _spriteRenderer.sprite.bounds;
+        
+        private TerrainManager _terrainManager;
 
         public bool IsXCoordinateWithinBounds(float x)
         {
@@ -37,6 +40,28 @@ namespace LAS
             float localY = (normalizedHeight - pivotNormalizedY) * _spriteBounds.size.y;
             
             return transform.position.y + localY * transform.localScale.y;
+        }
+
+        public void Initialise(TerrainManager manager)
+        {
+            _terrainManager = manager;
+        }
+
+        private void OnDisable()
+        {
+            if (_terrainManager == null)
+                return;
+
+            _terrainManager.RemoveObstacle(this);
+            _terrainManager = null;
+        }
+
+        private void FixedUpdate()
+        {
+            float delta = transform.position.x - _terrainManager.transform.position.x;
+
+            if (delta < -50)
+                gameObject.SetActive(false);
         }
     }
 }
