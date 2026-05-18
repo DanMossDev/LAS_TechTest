@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace LAS
@@ -10,6 +11,8 @@ namespace LAS
         [SerializeField] private float _sineStrength = 0.5f;
         
         [SerializeField] private Material _terrainMaterial;
+        
+        [SerializeField] private List<TerrainObstacle> _terrainObstacles;
 
         private float _randomOffset;
         
@@ -45,6 +48,17 @@ namespace LAS
         public float GetTerrainHeightAtX(float x)
         {
             var y = -(Mathf.Sin((x + _randomOffset) * _sineFrequency) * _sineStrength + (x * _slopeSeverity));
+
+            foreach (var terrainObstacle in _terrainObstacles)
+            {
+                if (!terrainObstacle.IsXCoordinateWithinBounds(x))
+                    continue;
+
+                var obstacleY = terrainObstacle.GetHeight(x);
+                if (obstacleY > y)
+                    return obstacleY;
+                break;
+            }
 
             return y;
         }
