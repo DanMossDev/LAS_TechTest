@@ -38,7 +38,7 @@ namespace LAS
         [SerializeField] private float _nearTerrainRandomOffset = -4.0f;
         [SerializeField] private float _farTerrainRandomOffset = -20.0f;
         
-        private float _randomOffset;
+        private int _randomOffset;
         private System.Random _random;
         
         public Camera MainCamera => _mainCamera;
@@ -79,7 +79,7 @@ namespace LAS
             #else
             _randomOffset = UnityEngine.Random.Range(0, 100000);
             #endif
-            _random = new System.Random(_randomSeed);
+            _random = new System.Random(_randomOffset);
         }
 
         private void FixedUpdate()
