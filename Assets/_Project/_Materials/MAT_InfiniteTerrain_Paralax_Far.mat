@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MAT_InfiniteTerrain
+  m_Name: MAT_InfiniteTerrain_Paralax_Far
   m_Shader: {fileID: -6465566751694194690, guid: 7a8c70ca069e7a54698dca088aaa2dfc, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -78,16 +78,17 @@ Material:
     - _MetaSineWaveFrequency: 0.086
     - _MetaSineWaveStrength: 5.82
     - _MetaSineWaveSubFrequency: 0.6
-    - _RandomOffset: 0
+    - _RandomOffset: -20
     - _SineWaveFrequency: 0.219
     - _SineWaveStrength: 0.95
     - _SlopeSeverity: 0.3
+    - _TerrainHeightOffset: 2
     - _ZWrite: 0
     m_Colors:
-    - _AccentColour: {r: 0.69182384, g: 0.4633914, b: 0.24583672, a: 0}
+    - _AccentColour: {r: 0.32704395, g: 0.30184716, b: 0.27665037, a: 0}
     - _Albedo: {r: 0.5597484, g: 0.54295003, b: 0.39252794, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _MainColour: {r: 0.5803922, g: 0.40030515, b: 0.23529409, a: 0}
+    - _MainColour: {r: 0.08176088, g: 0.047429588, b: 0.016712125, a: 0}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

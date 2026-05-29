@@ -16,13 +16,13 @@ namespace LAS
 
         public bool IsXCoordinateWithinBounds(float x)
         {
-            x -= transform.position.x;
+            x -= _spriteRenderer.transform.position.x;
             return x >= _spriteBounds.min.x * transform.localScale.x && x <= _spriteBounds.max.x * transform.localScale.x;
         }
 
         public float GetHeight(float x)
         {
-            x -= transform.position.x;
+            x -= _spriteRenderer.transform.position.x;
             float scaledHalfWidth = _spriteBounds.extents.x * transform.localScale.x;
             
             float t = Mathf.InverseLerp(-scaledHalfWidth, scaledHalfWidth, x);
@@ -40,7 +40,7 @@ namespace LAS
             
             float localY = (normalizedHeight - pivotNormalizedY) * _spriteBounds.size.y;
             
-            return transform.position.y + localY * transform.localScale.y;
+            return _spriteRenderer.transform.position.y + localY * transform.localScale.y;
         }
 
         public void Initialise(TerrainManager manager)

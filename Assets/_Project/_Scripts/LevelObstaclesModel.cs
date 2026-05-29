@@ -7,11 +7,11 @@ namespace LAS
     {
         [SerializeField] private TerrainObstacleSpawnData[] _obstaclePrefabs;
 
-        public TerrainObstacle GetTerrainObstacle()
+        public TerrainObstacle GetTerrainObstacle(System.Random rand)
         {
-            var obstacleData = _obstaclePrefabs[Random.Range(0, _obstaclePrefabs.Length)];
+            var obstacleData = _obstaclePrefabs[rand.Next(0, _obstaclePrefabs.Length)];
             var gameObject = MossUtils.ObjectPoolController.Instance.Get(obstacleData.ObstaclePrefab.name);
-            gameObject.transform.localScale = Vector3.one * Random.Range(obstacleData.ScaleRange.x, obstacleData.ScaleRange.y);
+            gameObject.transform.localScale = Vector3.one * rand.Next(Mathf.FloorToInt(obstacleData.ScaleRange.x), Mathf.CeilToInt(obstacleData.ScaleRange.y));
             if (!gameObject.TryGetComponent(out TerrainObstacle terrainObstacle))
                 Debug.LogError("[LevelObstaclesModel] TerrainObstacle component was somehow destroyed in object pool");
             return terrainObstacle;
