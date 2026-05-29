@@ -10,6 +10,8 @@ namespace LAS
         
         public static event Action<Vector2> MoveInput;
         public static event Action<bool> JumpInput;
+
+        public static event Action AnyInput;
         
         public static event Action SubmitInput;
 
@@ -45,6 +47,8 @@ namespace LAS
             _inputActions["Jump"].canceled += OnStopJump;
             
             _inputActions["Submit"].performed += OnSubmit;
+            
+            _inputActions["Any"].performed += OnAny;
         }
 
         private void Unsubscribe()
@@ -57,6 +61,8 @@ namespace LAS
             _inputActions["Jump"].canceled -= OnStopJump;
             
             _inputActions["Submit"].performed -= OnSubmit;
+            
+            _inputActions["Any"].performed -= OnAny;
         }
 
         private void OnMove(InputAction.CallbackContext context)
@@ -78,6 +84,11 @@ namespace LAS
         private void OnSubmit(InputAction.CallbackContext context)
         {
             SubmitInput?.Invoke();
+        }
+
+        private void OnAny(InputAction.CallbackContext context)
+        {
+            AnyInput?.Invoke();
         }
     }
 }
